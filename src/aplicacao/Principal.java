@@ -1,0 +1,44 @@
+package aplicacao;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import modelo.entidades.ContaBancaria;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Digite dados da conta: ");
+		System.out.print("Número: ");
+		int numero_sc = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Titular: ");
+		String titular_sc = sc.nextLine();
+		System.out.print("Saldo Inicial: ");
+		Double saldo_sc = sc.nextDouble();
+		sc.nextLine();
+		System.out.print("Limite de retirada: ");
+		Double limite_sc = sc.nextDouble();
+		sc.nextLine();
+		ContaBancaria conta = new ContaBancaria(numero_sc, titular_sc, saldo_sc, limite_sc);
+		
+		System.out.println();
+		System.out.print("Digite o valor do saque: ");
+		Double valorSaque_sc = sc.nextDouble();
+		sc.nextLine();
+		if(valorSaque_sc > conta.getLimiteSaque()) {
+			System.out.println("Erro de saque: o valor excedeu o limite de saque");
+		} else if(valorSaque_sc > conta.getSaldo()) {
+			System.out.println("Erro de saque: o valor do saldo é insuficiente");
+		} else {	
+			System.out.println("novo saldo: " + String.format("%.2f",  conta.saque(valorSaque_sc)));
+		}	
+		
+		sc.close();
+
+	}
+
+}
