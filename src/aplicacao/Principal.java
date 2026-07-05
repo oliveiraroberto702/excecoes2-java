@@ -29,14 +29,13 @@ public class Principal {
 		System.out.print("Digite o valor do saque: ");
 		Double valorSaque_sc = sc.nextDouble();
 		sc.nextLine();
-		if(valorSaque_sc > conta.getLimiteSaque()) {
-			System.out.println("Erro de saque: o valor excedeu o limite de saque");
-		} else if(valorSaque_sc > conta.getSaldo()) {
-			System.out.println("Erro de saque: o valor do saldo é insuficiente");
-		} else {	
-			System.out.println("novo saldo: " + String.format("%.2f",  conta.saque(valorSaque_sc)));
-		}	
 		
+		if(conta.saque(valorSaque_sc)==null) {
+			System.out.println("novo saldo: " + String.format("%.2f",  conta.getSaldo()));
+		} else {
+			System.out.println(conta.saque(valorSaque_sc));
+		}
+				
 		sc.close();
 
 	}
