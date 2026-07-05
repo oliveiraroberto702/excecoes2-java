@@ -11,7 +11,7 @@ public class ContaBancaria {
 	public ContaBancaria() {
 		
 	}
-	public ContaBancaria(Integer numero, String titular, Double saldo, Double limiteSaque) throws DominioExcecoes{
+	public ContaBancaria(Integer numero, String titular, Double saldo, Double limiteSaque) { // throws DominioExcecoes{
 		if(saldo < 0 || limiteSaque<0) {
 			throw new DominioExcecoes("não se pode  lancar valores negativos");
 		}
@@ -45,7 +45,7 @@ public class ContaBancaria {
 	public void deposito(double valorDeposito) {
 		saldo += valorDeposito;
 	}
-	public void saque(double valorSaque) throws DominioExcecoes {
+	public void saque(double valorSaque) { // throws DominioExcecoes {
 		if(valorSaque > limiteSaque) {
 			throw new DominioExcecoes("Erro de saque: o valor excedeu o limite de saque");
 		} else if(valorSaque > saldo) {

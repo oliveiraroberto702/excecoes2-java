@@ -1,6 +1,6 @@
 package modelo.excecoes;
 
-public class DominioExcecoes extends Exception {
+public class DominioExcecoes extends RuntimeException { // Exception {
 
 	private static final long serialVersionUID = 1L;
 	public DominioExcecoes(String msg) {

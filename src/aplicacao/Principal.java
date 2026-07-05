@@ -38,10 +38,13 @@ public class Principal {
 		catch(InputMismatchException e) {
 			System.out.println("valores devem ser numéricos");
 		}
+		
 		catch(DominioExcecoes e) {
 		  	  System.out.println(e.getMessage());
 		  }
-		
+		catch(RuntimeException e) {
+			System.out.println("erro inesperado");
+		}
 		sc.close();
 
 	}
