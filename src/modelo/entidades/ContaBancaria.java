@@ -1,5 +1,7 @@
 package modelo.entidades;
 
+import modelo.excecoes.DominioExcecoes;
+
 public class ContaBancaria {
 	private Integer numero;
 	private String 	titular;
@@ -9,7 +11,10 @@ public class ContaBancaria {
 	public ContaBancaria() {
 		
 	}
-	public ContaBancaria(Integer numero, String titular, Double saldo, Double limiteSaque) {
+	public ContaBancaria(Integer numero, String titular, Double saldo, Double limiteSaque) { // throws DominioExcecoes{
+		if(saldo < 0 || limiteSaque<0) {
+			throw new DominioExcecoes("não se pode  lancar valores negativos");
+		}
 		this.numero=numero;
 		this.titular=titular;
 		this.saldo=saldo;
@@ -40,13 +45,12 @@ public class ContaBancaria {
 	public void deposito(double valorDeposito) {
 		saldo += valorDeposito;
 	}
-	public String saque(double valorSaque) {
+	public void saque(double valorSaque) { // throws DominioExcecoes {
 		if(valorSaque > limiteSaque) {
-			return "Erro de saque: o valor excedeu o limite de saque";
+			throw new DominioExcecoes("Erro de saque: o valor excedeu o limite de saque");
 		} else if(valorSaque > saldo) {
-			return "Erro de saque: o valor do saldo é insuficiente";
+			throw new DominioExcecoes("Erro de saque: o valor do saldo é insuficiente");
 		}	
 		saldo -= valorSaque;
-		return null;
 	}	
 }
