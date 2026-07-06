@@ -45,12 +45,16 @@ public class ContaBancaria {
 	public void deposito(double valorDeposito) {
 		saldo += valorDeposito;
 	}
-	public void saque(double valorSaque) { // throws DominioExcecoes {
+	public void saque(double valorSaque) {
+		saldo -= valorSaque;
+	}
+	public void validarSaque(double valorSaque) { // throws DominioExcecoes {
 		if(valorSaque > limiteSaque) {
 			throw new DominioExcecoes("Erro de saque: o valor excedeu o limite de saque");
-		} else if(valorSaque > saldo) {
+		}
+		if(valorSaque > saldo) {
 			throw new DominioExcecoes("Erro de saque: o valor do saldo é insuficiente");
 		}	
-		saldo -= valorSaque;
+		
 	}	
 }
