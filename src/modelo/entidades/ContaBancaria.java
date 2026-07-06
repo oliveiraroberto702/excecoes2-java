@@ -46,9 +46,10 @@ public class ContaBancaria {
 		saldo += valorDeposito;
 	}
 	public void saque(double valorSaque) {
+		validarSaque(valorSaque);
 		saldo -= valorSaque;
 	}
-	public void validarSaque(double valorSaque) { // throws DominioExcecoes {
+	private void validarSaque(double valorSaque) { // throws DominioExcecoes {
 		if(valorSaque > limiteSaque) {
 			throw new DominioExcecoes("Erro de saque: o valor excedeu o limite de saque");
 		}

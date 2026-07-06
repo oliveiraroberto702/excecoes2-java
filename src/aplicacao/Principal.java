@@ -31,8 +31,7 @@ public class Principal {
 			System.out.print("Digite o valor do saque: ");
 			Double valorSaque_sc = sc.nextDouble();
 			sc.nextLine();
-			conta.validarSaque(valorSaque_sc);
-			conta.saque(valorSaque_sc);
+			conta.saque(valorSaque_sc);	
 			System.out.println("Saldo atual: " + String.format("%.2f", conta.getSaldo()));
 					
 		}
