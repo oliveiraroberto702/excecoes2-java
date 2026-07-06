@@ -40,13 +40,15 @@ public class ContaBancaria {
 	public void deposito(double valorDeposito) {
 		saldo += valorDeposito;
 	}
-	public String saque(double valorSaque) {
+	public void saque(double valorSaque) {
+		saldo -= valorSaque;
+	}	
+	public String validaSaque(double valorSaque) {
 		if(valorSaque > limiteSaque) {
 			return "Erro de saque: o valor excedeu o limite de saque";
 		} else if(valorSaque > saldo) {
 			return "Erro de saque: o valor do saldo é insuficiente";
 		}	
-		saldo -= valorSaque;
 		return null;
 	}	
 }
