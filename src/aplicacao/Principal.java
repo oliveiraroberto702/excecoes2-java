@@ -29,11 +29,12 @@ public class Principal {
 		System.out.print("Digite o valor do saque: ");
 		Double valorSaque_sc = sc.nextDouble();
 		sc.nextLine();
-		
-		if(conta.saque(valorSaque_sc)==null) {
+		String erro = conta.validaSaque(valorSaque_sc);
+		if(erro == null) {
+			conta.saque(valorSaque_sc);
 			System.out.println("novo saldo: " + String.format("%.2f",  conta.getSaldo()));
 		} else {
-			System.out.println(conta.saque(valorSaque_sc));
+			System.out.println(erro);
 		}
 				
 		sc.close();
